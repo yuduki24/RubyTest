@@ -53,6 +53,7 @@ def main():
     player = Character("img\PikoC-Girl01.png", 0, 0)
     
     clock = pygame.time.Clock()
+    fullscreen_flag = False
     while True:
         clock.tick(60)
         screen.fill((0,0,255))
@@ -62,6 +63,13 @@ def main():
         for event in pygame.event.get():
             if event.type == QUIT:
                 sys.exit()
+            elif event.type == KEYDOWN and event.key == K_F2:
+                # F2キーでフルスクリーンモードへの切り替え
+                fullscreen_flag = not fullscreen_flag
+                if fullscreen_flag:
+                    screen = pygame.display.set_mode(SCR_RECT.size, FULLSCREEN, 32)
+                else:
+                    screen = pygame.display.set_mode(SCR_RECT.size, 0, 32)
  
 if __name__ == "__main__":
     main()
